@@ -26,7 +26,7 @@ public class ProductsDAO {
 		PreparedStatement pstm=null;		
 		try
 		{
-			con = UConecction.getConnection();				
+			con = UConecction.getConnection();
 			Scanner scan = new Scanner(System.in);
 			System.out.println("select the store id where to add the product");
 			int key3 = scan.nextInt();

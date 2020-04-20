@@ -2,6 +2,11 @@ package com.mall;
 
 import java.util.Scanner;
 import java.util.TreeMap;
+
+import com.security.Encription;
+import com.security.Validate;
+
+import java.io.UnsupportedEncodingException;
 import java.util.Collection;
 import java.util.List;
 
@@ -33,7 +38,8 @@ public class TheMall {
 			System.out.println("5.Modify store data");///
 			System.out.println("6.Modify a store product");///
 			System.out.println("7.Delete a store prodduct");///
-			System.out.println("8.Delete the whole store and products");//
+			System.out.println("8.Delete the whole store and products");///
+			System.out.println("9.Add a user");///
 			System.out.println("0.Exit");
 			System.out.println("Choose an option:");
 			x = scan.nextInt();			
@@ -72,6 +78,8 @@ public class TheMall {
 					printstores(stores);
 					fac.cascadeDeletef();
 					break;
+				case 9:
+					Validate.registerUser();
 				case 0: System.out.println("Exiting...");
 					break;
 				default: System.out.println("invalid option");
@@ -128,16 +136,17 @@ public class TheMall {
 			switch(x)
 			{
 			case 1:
-				System.out.println("enter the \"secret\" word");
-				String word = scan.nextLine();
-				if(word.equals("secret"))
+				System.out.println("enter username");
+				String user = scan.nextLine();
+				System.out.println("enter password");
+				String pass = scan.nextLine();
+				if(Validate.authorizeadmin(user, pass))
 				{
 					menuAdmin();
 				}
 				else
 				{
-					System.out.println("That is no the word I'm looking for");
-					System.exit(0);
+					menuUser();
 				}
 				break;
 			case 2:
