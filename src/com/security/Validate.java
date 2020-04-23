@@ -28,10 +28,8 @@ public class Validate {
 			while(rs.next())
 			{
 				String usern = rs.getString(1);
-				System.out.println(usern);
 				String code = rs.getString(2);
 				uncode = Encription.desencriptar(code);
-				System.out.println(uncode);
 				int admin = rs.getInt(3);
 				boolean us=usern.equals((user.trim()));
 		        boolean ps=uncode.equals(password);
